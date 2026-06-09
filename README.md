@@ -1,6 +1,25 @@
 # Talk-a-Tive
 
+**Live Demo:** https://talk-a-tive-roan.vercel.app
+
 A real-time chat application built with the MERN stack and Socket.io. Supports one-on-one and group messaging, online presence indicators, and typing notifications.
+
+## Test Accounts
+
+Try the app instantly with these pre-seeded accounts (all use password `password123`):
+
+| Username | Email |
+|---|---|
+| `alex_rivera` | alex@talktive.com |
+| `priya_sharma` | priya@talktive.com |
+| `jordan_lee` | jordan@talktive.com |
+| `sofia_martin` | sofia@talktive.com |
+| `noah_chen` | noah@talktive.com |
+| `aisha_khan` | aisha@talktive.com |
+| `liam_torres` | liam@talktive.com |
+| `zara_patel` | zara@talktive.com |
+
+Each account has pre-populated DM and group conversations so the app never looks empty.
 
 ## Tech Stack
 
@@ -133,6 +152,8 @@ Talk-a-Tive/
 
 ## Environment Variables Reference
 
+### Backend (`backend/.env`)
+
 | Variable | Description | Default |
 |---|---|---|
 | `PORT` | Port the backend server listens on | `5000` |
@@ -140,3 +161,28 @@ Talk-a-Tive/
 | `JWT_SECRET` | Secret key for signing JWTs | — |
 | `JWT_EXPIRES_IN` | JWT expiry duration | `7d` |
 | `NODE_ENV` | Environment (`development` / `production`) | `development` |
+| `CLIENT_URL` | Frontend URL for CORS (set to Vercel URL in production) | `http://localhost:5173` |
+
+### Frontend (Vercel Environment Variables)
+
+| Variable | Description |
+|---|---|
+| `VITE_BACKEND_URL` | Backend URL (e.g. `https://your-app.onrender.com`) |
+
+## Seeding the Database
+
+To populate the database with test users and conversations:
+
+```bash
+cd backend
+MONGO_URI=your_mongo_uri node seed.js   # Mac/Linux
+$env:MONGO_URI="your_mongo_uri"; node seed.js   # Windows PowerShell
+```
+
+This creates 8 users (password: `password123`), 6 DM conversations, and 2 group chats.
+
+## Deployment
+
+- **Frontend:** [Vercel](https://vercel.com) — set root directory to `frontend`, add `VITE_BACKEND_URL` env var
+- **Backend:** [Render](https://render.com) — set root directory to `backend`, add all backend env vars
+- **Database:** [MongoDB Atlas](https://cloud.mongodb.com) — free M0 cluster
