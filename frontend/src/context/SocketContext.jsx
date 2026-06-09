@@ -18,7 +18,7 @@ export const SocketProvider = ({ children }) => {
       return;
     }
 
-    const s = io('http://localhost:5000', { withCredentials: true });
+    const s = io(import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000', { withCredentials: true });
     setSocket(s);
 
     s.on('connect',    () => setIsConnected(true));
